@@ -1,7 +1,8 @@
 # Cassandra
 #
 # VERSION               0.0.1
-# BUILD-USING:        docker build -t cassandra .
+# BUILD-USING:        docker build -t docker-cassandra .
+# PUSH-USING:         docker tag docker-cassandra quay.io/queuenetwork/docker-cassandra  && docker push quay.io/queue/docker-cassandra
 
 FROM      ubuntu
 MAINTAINER Dan Kinsley <dan@queuenetwork.com>
@@ -14,7 +15,9 @@ RUN add-apt-repository ppa:webupd8team/java
 # accept license without requiring user intervention
 RUN echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
 # and now install oracle java7
-RUN sudo apt-get update && apt-get install -y oracle-java7-installer
+RUN sudo apt-get update && apt-get install -y \
+	oracle-java7-installer \
+	python-yaml
 
 # add datastax apt repository
 RUN echo "deb http://debian.datastax.com/community stable main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
@@ -24,9 +27,11 @@ RUN sudo apt-get update && apt-get install -y \
 	dsc20 \
 	libjna-java
 
-ADD cassandra.yaml /etc/cassandra/cassandra.yaml
-# Port for RexPro
+# Expose Cassandra ports
 EXPOSE 7000 7199 9160 61620 61621
 
+# add the launch script
+ADD run.py /run.py
+RUN chmod 700 /run.py
 # Launch cassandra
-CMD ["/usr/sbin/cassandra","-f"]
+CMD ["/run.py"]
