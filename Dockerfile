@@ -2,7 +2,7 @@
 #
 # VERSION               0.0.1
 # BUILD-USING:        docker build -t docker-cassandra .
-# PUSH-USING:         docker tag docker-cassandra quay.io/queuenetwork/docker-cassandra  && docker push quay.io/queue/docker-cassandra
+# PUSH-USING:         docker tag docker-cassandra quay.io/queue/docker-cassandra  && docker push quay.io/queue/docker-cassandra
 
 FROM      ubuntu
 MAINTAINER Dan Kinsley <dan@queuenetwork.com>

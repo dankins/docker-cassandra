@@ -11,9 +11,10 @@ CASSANDRA_CONFIG_FILE = os.path.join('/etc/cassandra', 'cassandra.yaml')
 # the following are optional, will default to the second parameter in getenv
 LISTEN_ADDRESS=os.getenv('LISTEN_ADDRESS',INTERNAL_IP)
 CLUSTER_NAME=os.getenv('CLUSTER_NAME',"Cassandra Cluster")
-DATA_DIRECTORY=os.getenv('DATA_DIRECTORY', "/var/lib/cassandra/data")
-COMMIT_DIRECTORY=os.getenv('COMMIT_DIRECTORY',"/var/lib/cassandra/commitlog")
-BROADCAST_ADDRESS=os.getenv('BROADCAST_ADDRESS',LISTEN_ADDRESS)
+DATA_DIRECTORY=os.getenv('DATA_DIRECTORY', "/cassandra-data")
+COMMIT_DIRECTORY=os.getenv('COMMIT_DIRECTORY',"/cassandra-commitlog")
+BROADCAST_ADDRESS=os.getenv('BROADCAST_ADDRESS','172.17.42.1')
+# THIS IS LIKELY INCORRECT - but it is the gateway address
 RPC_ADDRESS=os.getenv('RPC_ADDRESS',LISTEN_ADDRESS)
 STORAGE_PORT=os.getenv('STORAGE_PORT',7000)
 NATIVE_TRANSPORT_PORT=os.getenv('NATIVE_TRANSPORT_PORT',9042)
