@@ -1,10 +1,10 @@
 # Cassandra
 #
 # VERSION               0.0.1
-# BUILD-USING:        docker build -t cassandra .
-# PUSH-USING:         docker tag cassandra quay.io/queue/cassandra  && docker push quay.io/queue/cassandra
+# BUILD-USING:        docker build -t docker-cassandra .
+# PUSH-USING:         docker tag cassandra surf/docker-cassandra  && docker push surf/docker-cassandra
 
-FROM      quay.io/queue/base-jvm
+FROM      surf/docker-base-jvm
 MAINTAINER Dan Kinsley <dan@queuenetwork.com>
 
 # add datastax apt repository
