@@ -12,7 +12,7 @@ RUN echo "deb http://debian.datastax.com/community stable main" | sudo tee -a /e
 RUN curl --silent -L http://debian.datastax.com/debian/repo_key | sudo apt-key add -
 
 RUN sudo apt-get update && apt-get install -y \
-	dsc20 \
+	cassandra=2.0.10 \
 	python-yaml
 
 # Expose Cassandra ports
