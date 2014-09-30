@@ -45,6 +45,15 @@ conf['seed_provider'][0]['parameters'][0]['seeds'] = \
 with open(CASSANDRA_CONFIG_FILE, 'w+') as f:
     yaml.dump(conf, f, default_flow_style=False)
 
+
+
+print "Starting with: \n" \
+	"CLUSTER_NAME: "+ CLUSTER_NAME + "\n" \
+	"SEEDS: "+ ",".join(SEEDS) + "\n" \
+	"LISTEN_ADDRESS: "+ LISTEN_ADDRESS + "\n" \
+	"BROADCAST_ADDRESS: "+ BROADCAST_ADDRESS + "\n" \
+	"RPC_ADDRESS: "+ RPC_ADDRESS + "\n" \
+	"STORAGE_PORT: "+ str(STORAGE_PORT) + "\n" 
 # Start Cassandra in the foreground.
 os.execl('/usr/sbin/cassandra', 'cassandra', '-f')
 
